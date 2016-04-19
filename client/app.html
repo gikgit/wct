@@ -1,0 +1,138 @@
+<head>
+  <title>Flack</title>
+</head>
+
+<body>
+  {{> Layout}}
+</body>
+
+<template name="Layout">
+  <div class="container">
+    <nav class="nav">
+      {{> Navigation}}
+    </nav>
+
+    <main class="main">
+      {{> Room}}
+    </main>
+
+    {{> RoomAddDialog}}
+  </div>
+</template>
+
+<template name="RoomAddDialog">
+  {{#if showRoomAddDialog}}
+    <div class="mask">
+    </div>
+    <div class="room-add-dialog">
+      <header>
+        <h1>Create a Room</h1>
+      </header>
+      <form>
+        <div class="fields">
+          <label for="name">Name</label>
+          <input type="text" name="room" autofocus />
+        </div>
+
+        <footer>
+          <button data-cancel class="btn btn-soft" type="button">Cancel</button>
+          <input type="submit" value="Create Room" class="btn" />
+        </footer>
+      </form>
+    </div>
+  {{/if}}
+</template>
+
+<template name="Navigation">
+  <header>
+    <h1>Flack</h1>
+    {{currentUser.profile.login}}
+  </header>
+
+  <div class="rooms">
+    <h3>Rooms <span data-room-add class="add-room fa fa-plus-circle"></span></h3>
+    <ul>       
+      <!--{{#with mainRoom}}-->
+        <!--<li data-room class="{{isRoomActiveClass}}"># main</li>-->
+      <!--{{/with}}-->
+        
+      <select room-select name="rooms" class="ui fluid search dropdown">
+            <!--<option value data-room class="{{isRoomActiveClass}}"># main</option>-->
+            {{#each rooms}}
+            <option value="{{name}}" data-room {{isRoomActiveClass}}># {{name}}</option>
+            {{/each}}
+      </select>
+   </ul>
+  </div>
+
+  <div class="invite">
+    <h3>Invite a Friend</h3>
+    <form data-invite>
+      <input type="email" name="email" placeholder="Email"/>
+      <input type="submit" class="btn btn-info" value="Invite" />
+    </form>
+
+    {{#if showInviteConfirm}}
+      <div class="invite-confirm">
+        Thanks for inviting your friend!
+      </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="Room">
+  <header class="main-header">
+    <h1># {{activeRoom}}</h1>
+  </header>
+
+  {{#if currentUser}}
+    <section class="main-list">
+      {{> CommentList}}
+    </section>
+
+    <footer class="main-footer">
+      {{> CommentAdd}}
+    </footer>
+  {{else}}
+    <div class="main-login">
+      <div class="main-login-inner">
+        <p>Oops, you need to login to participate!</p>
+        {{> loginButtons}}
+      </div>
+    </div>
+  {{/if}}
+</template>
+
+<template name="CommentList">
+  <ul class="comment-list">
+    {{#each comments}}
+      <li class="comment-item">
+        {{> CommentItem}}
+      </li>
+    {{else}}
+      <li>Sorry, no comments yet!</li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="CommentItem">
+  <img class="avatar" src="{{avatarUrl}}"/>
+
+  <div class="header">
+    <span class="login">{{login}}</span>
+    <span class="timestamp">{{formattedTimestamp timestamp}}</span>
+  </div>
+
+  <div class="comment">
+    {{comment}}
+  </div>
+</template>
+
+<template name="CommentAdd">
+  <form class="comment-add">
+    <input type="text" class="comment-add-text" name="comment" placeholder="Add a comment..." />
+    <input type="submit" value="Add" class="btn comment-add-btn" />
+  </form>
+</template>
+
+
