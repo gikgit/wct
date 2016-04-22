@@ -2,7 +2,7 @@
 /* Publish Functions */
 /*****************************************************************************/
 Meteor.publish('comments', function () {
-  return Comments.find({}, {sort: {timestamp: 1}})
+  return Comments.find({}, {sort: {timestamp: 1}});
 });
 
 Meteor.publish('users', function () {
@@ -19,7 +19,7 @@ Meteor.publish('rooms', function () {
 Meteor.methods({
   inviteFriend: function (email) {
     var user = Meteor.user();
-    var url = Meteor.absoluteUrl() || "http://localhost:3000"
+    var url = Meteor.absoluteUrl() || "http://localhost:3000";
 
     if (!user) {
       throw new Meteor.Error("Not authorized to invite friends!");
@@ -97,6 +97,6 @@ Rooms.allow({
 /*****************************************************************************/
 /* Database Seeding */
 /*****************************************************************************/
-if (!Rooms.findOne({name: 'main'})) {
-  Rooms.insert({name: 'main'});
+if (!Rooms.findOne({name: 'greeting'})) {
+  Rooms.insert({name: 'greeting'});
 }

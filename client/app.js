@@ -8,7 +8,7 @@ Meteor.subscribe('rooms');
 /*****************************************************************************/
 /* Initial State */
 /*****************************************************************************/
-Session.set('activeRoom', 'main');
+Session.set('activeRoom', 'greeting');
 Session.set('showInviteConfirm', false);
 Session.set('showRoomAddDialog', false);
 
@@ -24,9 +24,9 @@ Meteor.methods({
 /*****************************************************************************/
 /* Template Helpers */
 /*****************************************************************************/
-Template.Navigation.helpers({
+Template.Menu.helpers({
   mainRoom: function () {
-    return Rooms.findOne({name: 'main'});
+    return Rooms.findOne({name: 'greeting'});
   },
 
   rooms: function () {
@@ -76,14 +76,15 @@ Template.CommentItem.helpers({
 /*****************************************************************************/
 /* Template Events */
 /*****************************************************************************/
-Template.Navigation.events({
+Template.Menu.events({
   'click [data-room-add]': function (e, tmpl) {
     Session.set('showRoomAddDialog', true);
+    tmpl.$('.ui.sidebar').sidebar('setting','transition','overlay').sidebar('toggle');
   },
 
-  'change [room-select]': function (e, tmpl) {
-    name = Template.instance().$('[room-select] option:selected').val();
-    Session.set('activeRoom', name);
+  'click [data-room]': function(e, tmpl) {
+    Session.set('activeRoom', this.name);
+    tmpl.$('.ui.sidebar').sidebar('setting','transition','overlay').sidebar('toggle');
   },
 
   'submit form[data-invite]': function (e, tmpl) {
@@ -94,8 +95,20 @@ Template.Navigation.events({
     form.reset();
 
     Meteor.call('inviteFriend', email);
+  },
+
+  'click .login-button': function(e, tmpl){
+    tmpl.$('.ui.sidebar').sidebar('setting','transition','overlay').sidebar('toggle');
   }
 });
+
+Template.Room.events({
+  'click .main-list': function(e, tmpl) {
+    e.preventDefault();
+    tmpl.parentTemplate(1).$('.ui.sidebar').sidebar('setting','transition','overlay').sidebar('toggle');
+  }
+});
+
 
 Template.RoomAddDialog.events({
   'submit form': function (e, tmpl) {
@@ -154,11 +167,23 @@ Template.CommentAdd.events({
 
 //
 //
-Template.Navigation.onCreated(function(){
+Template.Menu.onCreated(function(){
     if (this.view.isRendered){
         this.$('.ui.dropdown').dropdown({allowAdditions: true});
         this.$('option.active').attr('selected','selected');    
     }
 });
 
+Blaze.TemplateInstance.prototype.parentTemplate = function(levels) {
+  var view = Blaze.currentView;
+  if (typeof levels === "undefined") {
+    levels = 1;
+  }
+  while (view) {
+    if (view.name.substring(0, 9) === "Template." && !(levels--)) {
+      return view.templateInstance();
+    }
+    view = view.parentView;
+  }
+};
 

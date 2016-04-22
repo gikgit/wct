@@ -77,10 +77,10 @@ input[type=text], input[type=email] {
   overflow: hidden;
 }
 
-.nav {
+.ui {
   width: 30%;
-  max-width: 350px;
-  min-width: 200px;
+  max-width: 200px;
+  min-width: 100px;
   background: #3F3F3F;
   color: #fff;
 }
@@ -113,95 +113,94 @@ input[type=text], input[type=email] {
   justify-content: center;
 }
 
-.main-login-inner {
-}
-
+.
 .main-footer {
   padding: 20px;
   border-top: 1px solid #ccc;
 }
 
-.nav header {
+.ui header {
   background: #333;
   padding: 10px;
 }
 
-.nav header h1 {
+.ui header h1 {
   font-size: 2em;
   margin: 0;
   padding: 5px 0px;
   color: #f2f2f2;
 }
 
-.nav header .user {
+.ui header .user {
   color: #7F7F7F;
   padding: 10px 0px;
 }
 
-.nav .rooms {
+.ui .rooms {
   padding: 10px;
 }
 
-.nav .rooms .active {
+.ui .rooms .active {
   background: #8C8C8C;
   border-radius: 4px;
 }
 
-.nav .rooms h3 {
+.ui .rooms h3 {
   text-transform: uppercase;
   color: #f2f2f2;
   margin: 20px 0px 20px 0px;
   font-size: 11px;
 }
 
-.nav .rooms .add-room {
+.ui .rooms .add-room {
   float: right;
   font-size: 14px;
   cursor: pointer;
 }
 
-.nav .rooms .add-room:hover {
+.rooms .add-room:hover {
   color: #fff;
 }
 
-.nav .rooms ul {
+.ui .rooms ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.nav .rooms ul li {
+.ui .rooms ul li {
   padding: 10px 4px;
   cursor: pointer;
+  color: antiquewhite;
 }
 
-.nav .invite h3 {
+.ui .invite h3 {
   text-transform: uppercase;
   color: #f2f2f2;
   margin: 20px 0px 20px 0px;
   font-size: 11px;
 }
 
-.nav .invite form {
+.ui .invite form {
   display: flex;
   flex-direction: row;
   justify-content: stretch;
 }
 
-.nav .invite {
+.ui .invite {
   padding: 10px;
 }
 
-.nav .invite input[type=email] {
+.ui .invite input[type=email] {
   border: none;
   width: 100%;
 }
 
-.nav .invite input[type=submit] {
+.ui .invite input[type=submit] {
   min-width: none;
 }
 
-.nav .invite .invite-confirm {
+.ui .invite .invite-confirm {
   color: #4AB969;
   padding: 10px 0px;
 }
@@ -338,4 +337,8 @@ input[type=text], input[type=email] {
 
 .ui.dropdown {
     background-color: #3F3F3F;
+}
+
+.user-id {
+  color: antiquewhite;
 }
