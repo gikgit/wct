@@ -4,6 +4,7 @@
 Meteor.subscribe('comments');
 Meteor.subscribe('users');
 Meteor.subscribe('rooms');
+Meteor.subscribe('tweets');
 
 /*****************************************************************************/
 /* Initial State */
@@ -15,11 +16,11 @@ Session.set('showRoomAddDialog', false);
 /*****************************************************************************/
 /* RPC Methods */
 /*****************************************************************************/
-Meteor.methods({
-  inviteFriend: function (email) {
-    Session.set('showInviteConfirm', true);
-  }
-});
+// Meteor.methods({
+//   inviteFriend: function (email) {
+//     Session.set('showInviteConfirm', true);
+//   }
+// });
 
 /*****************************************************************************/
 /* Template Helpers */
@@ -68,8 +69,8 @@ Template.CommentItem.helpers({
 
   avatarUrl: function () {
     var comment = this;
-    var user = Meteor.users.findOne({'profile.login': comment.login});
-    return user.profile.avatarUrl;
+    var user = Meteor.users.findOne({'profile.email':comment.email});
+    return user.profile.picture;
   }
 });
 
@@ -153,7 +154,7 @@ Template.CommentAdd.events({
       return;
 
     Comments.insert({
-      login: user.profile.login,
+      email: user.profile.email,
       timestamp: new Date(),
       room: Session.get('activeRoom'),
       comment: comment
@@ -170,7 +171,7 @@ Template.CommentAdd.events({
 Template.Menu.onCreated(function(){
     if (this.view.isRendered){
         this.$('.ui.dropdown').dropdown({allowAdditions: true});
-        this.$('option.active').attr('selected','selected');    
+        this.$('option.active').attr('selected','selected');
     }
 });
 
@@ -186,4 +187,3 @@ Blaze.TemplateInstance.prototype.parentTemplate = function(levels) {
     view = view.parentView;
   }
 };
-

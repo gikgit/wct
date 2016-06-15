@@ -5,6 +5,7 @@
 <body>
   {{> Layout}}
 </body>
+
 <template name="Layout">
   {{> Menu}}
   <div class="pusher">
@@ -14,10 +15,11 @@
     {{> RoomAddDialog}}
   </div>
 </template>
+
 <template name="Menu">
   <div class="ui sidebar inverted vertical menu">
     <header>
-      <h1>CHAT2U</h1> 
+      <h1>CHAT2U</h1>
       <div class="user-id">{{>loginButtons}}</div>
     </header>
     <div class="rooms">
@@ -32,6 +34,7 @@
     </div>
   </div>
 </template>
+
 <template name="RoomAddDialog">
   {{#if showRoomAddDialog}}
   <div class="mask">
@@ -53,6 +56,7 @@
   </div>
   {{/if}}
 </template>
+
 <template name="Room">
   <header class="main-header">
     <h1># {{activeRoom}}</h1>
@@ -73,6 +77,7 @@
   </div>
   {{/if}}
 </template>
+
 <template name="CommentList">
   <ul class="comment-list">
     {{#each comments}}
@@ -84,16 +89,18 @@
     {{/each}}
   </ul>
 </template>
+
 <template name="CommentItem">
   <img class="avatar" src="{{avatarUrl}}" />
   <div class="header">
-    <span class="login">{{login}}</span>
+    <span class="login">{{email}}</span>
     <span class="timestamp">{{formattedTimestamp timestamp}}</span>
   </div>
   <div class="comment">
     {{comment}}
   </div>
 </template>
+
 <template name="CommentAdd">
   <form class="comment-add">
     <input type="text" class="comment-add-text" name="comment" placeholder="Add a comment..." />
