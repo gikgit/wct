@@ -94,9 +94,15 @@ Template.CommentItem.helpers({
 
   avatarUrl: function () {
     var comment = this;
-    var user = Meteor.users.findOne({'profile.email':comment.email});
-    return user.profile.picture;
+    // console.log(comment);
+    var user = Meteor.users.findOne({'profile.email': comment.email});
+    return user.profile.avatarUrl;
   }
+  // avatarUrl: function () {
+  //   var comment = this;
+  //   var user = Meteor.users.findOne({'profile.email':comment.email});
+  //   return user.profile.picture;
+  // }
 });
 
 Template.registerHelper('formatDate', function() {

@@ -1,5 +1,5 @@
 accounts-base@1.2.7
-accounts-google@1.0.10
+accounts-github@1.0.10
 accounts-oauth@1.1.13
 accounts-ui@1.1.9
 accounts-ui-unstyled@1.1.12
@@ -30,7 +30,7 @@ ejson@1.0.12
 email@1.0.13
 flemay:less-autoprefixer@1.2.0
 geojson-utils@1.0.9
-google@1.1.12
+github@1.1.8
 hot-code-push@1.0.4
 html-tools@1.0.10
 htmljs@1.0.10
