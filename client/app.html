@@ -12,6 +12,9 @@
     <main class="main">
       {{> Room}}
     </main>
+    <div class="twits">
+      {{> Twits}}
+    </div>
     {{> RoomAddDialog}}
   </div>
 </template>
@@ -64,6 +67,7 @@
   {{#if currentUser}}
   <section class="main-list">
     {{> CommentList}}
+
   </section>
   <footer class="main-footer">
     {{> CommentAdd}}
@@ -77,6 +81,37 @@
   </div>
   {{/if}}
 </template>
+
+
+<template name="Twits">
+  <ul class="twits-list">
+    {{#each twitsList}}
+    <div class="twits-item">
+      {{> TwitsItem}}
+    </div>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="TwitsItem">
+  <img class="thumb" src="{{user.profile_image_url_https}}"/>
+  <div class="content">
+    <div class="name">
+      <a href="{{user.url}}">{{user.name}}</a>
+      {{formatDate}}
+      <!-- {{timestamp_ms}} -->
+    </div>
+
+    {{#with content}}
+      <div class="text">{{con}}
+        <a href="{{url}}">{{url}}</a>
+      </div>
+    {{/with}}
+  </div>
+  <div class="clearfix"></div>
+
+</template>
+
 
 <template name="CommentList">
   <ul class="comment-list">

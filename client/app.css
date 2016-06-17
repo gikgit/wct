@@ -85,10 +85,12 @@ input[type=text], input[type=email] {
   color: #fff;
 }
 
-.main {
+.main, .twits {
   flex: 1;
   display: flex;
   flex-direction: column;
+  float: left;
+  width: 70%;
   height: 100vh;
 }
 
@@ -100,6 +102,7 @@ input[type=text], input[type=email] {
   flex: 1;
   overflow-y: scroll;
   padding: 10px;
+  /*position: relative;*/
 }
 
 .main-login {
@@ -113,11 +116,14 @@ input[type=text], input[type=email] {
   justify-content: center;
 }
 
-.
+
 .main-footer {
   padding: 20px;
   border-top: 1px solid #ccc;
 }
+
+
+
 
 .ui header {
   background: #333;
@@ -209,6 +215,32 @@ input[type=text], input[type=email] {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.twits {
+  width: 30%;
+  /*background-color: #6F7678;*/
+
+}
+
+.twits-item {
+  /*background-color: #e1f5fe;*/
+}
+
+.twits-item > .content, .thumb {
+  float: left;
+  width: 12%;
+}
+
+.twits-item > .content {
+  width: 88%;
+  padding-left: 5px;
+  margin-bottom: 25px;
+  background-color: #f5f5f5;
+}
+
+.twits-item > .clearfix {
+  clear: both;
 }
 
 .comment-item {

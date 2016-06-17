@@ -1,4 +1,4 @@
-Fiber = Npm.require('fibers');
+
 /*****************************************************************************/
 /* Publish Functions */
 /*****************************************************************************/
@@ -68,42 +68,3 @@ Rooms.allow({
 if (!Rooms.findOne({name: 'greeting'})) {
   Rooms.insert({name: 'greeting'});
 }
-
-Twit = new TwitMaker({
-  consumer_key:'0GhQDs3VxlXktYaoc4mFD1Gpa',
-  consumer_secret:'XduJksDuqjIeXAv4LWVyoAUi6HqKtkBJjOVwHLx4sF9pxSucXR',
-  access_token:'607071332-Wqo3B6CDXkUGYaFXYLI1gYFvL1q3iOlT7UsKe07T',
-  access_token_secret:'7HzhpqTNfoO2W72CgpLqrXQlB05BuweyvKnHuu6SIeYC0'
-});
-
-var stream = Twit.stream('user');
-stream.on('tweet', function (tweet) {
-  Fiber(function() {
-    var cur = Tweets.findOne({});
-    if (cur) {
-      Tweets.remove(cur._id);
-    }
-    console.log(tweet);
-  }).run();
-
-  // Meteor.bindEnvironment(function(){
-  //   var fiber = Fiber.current;
-  //   console.log(fiber);
-  //   var cur = Tweets.findOne({});
-  //   if (cur) {
-  //     Tweets.remove(cur._id);
-  //   }
-  //   console.log(tweet);
-  // })
-  // var cur = Tweets.findOne({});
-  // if (cur) {
-  //   Tweets.remove(cur._id);
-  // }
-  // var cur = Tweets.findOne({});
-  // if (cur){
-  //   // Tweets.remove(cur._id);
-  //   console.log(cur);
-  // }
-
-
-});

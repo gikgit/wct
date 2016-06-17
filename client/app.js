@@ -49,6 +49,31 @@ Template.Room.helpers({
   }
 });
 
+Template.Twits.helpers({
+  twitsList: function () {
+    return Tweets.find({}, {sort: {timestamp_ms: -1}});
+  }
+});
+
+Template.TwitsItem.helpers({
+  content: function() {
+    re = /http[s]?/i;
+    found = this.text.match(re);
+    info = {};
+    urls = [];
+    if (found.index) {
+      info.con = this.text.slice(0, found.index);
+      url = this.text.slice(found.index, this.text.length);
+      urls = url.split(" ");
+      info.url = urls[0];
+    }
+
+
+    return info;
+  }
+});
+
+
 Template.RoomAddDialog.helpers({
   showRoomAddDialog: function () {
     return Session.equals('showRoomAddDialog', true);
@@ -74,6 +99,9 @@ Template.CommentItem.helpers({
   }
 });
 
+Template.registerHelper('formatDate', function() {
+  return moment().format('MMMM Do YYYY, h:mm:ss a');
+});
 /*****************************************************************************/
 /* Template Events */
 /*****************************************************************************/
