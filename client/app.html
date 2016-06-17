@@ -86,7 +86,7 @@
 <template name="Twits">
   <ul class="twits-list">
     {{#each twitsList}}
-    <div class="twits-item">
+    <div class="twits-item animated slideInDown">
       {{> TwitsItem}}
     </div>
     {{/each}}
@@ -98,12 +98,14 @@
   <div class="content">
     <div class="name">
       <a href="{{user.url}}">{{user.name}}</a>
-      {{formatDate}}
+      <div class="timestamp">
+        {{formatDate}}
+      </div>
     </div>
 
     {{#with content}}
       <div class="text">{{con}}
-        <a href="{{url}}">{{url}}</a>
+        <a target="_blank" href="{{url}}">{{url}}</a>
       </div>
     {{/with}}
   </div>
@@ -127,7 +129,7 @@
 <template name="CommentItem">
   <img class="avatar" src="{{avatarUrl}}" />
   <div class="header">
-    <span class="login">{{email}}</span>
+    <span class="login">{{name}}</span>
     <span class="timestamp">{{formattedTimestamp timestamp}}</span>
   </div>
   <div class="comment">

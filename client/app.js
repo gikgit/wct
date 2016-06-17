@@ -65,9 +65,8 @@ Template.TwitsItem.helpers({
       info.con = this.text.slice(0, found.index);
       url = this.text.slice(found.index, this.text.length);
       urls = url.split(" ");
-      info.url = urls[0];
+      info.url = urls.pop();
     }
-
 
     return info;
   }
@@ -94,15 +93,10 @@ Template.CommentItem.helpers({
 
   avatarUrl: function () {
     var comment = this;
-    // console.log(comment);
     var user = Meteor.users.findOne({'profile.email': comment.email});
-    return user.profile.avatarUrl;
+    return user.profile.picture;
   }
-  // avatarUrl: function () {
-  //   var comment = this;
-  //   var user = Meteor.users.findOne({'profile.email':comment.email});
-  //   return user.profile.picture;
-  // }
+
 });
 
 Template.registerHelper('formatDate', function() {
@@ -188,6 +182,7 @@ Template.CommentAdd.events({
       return;
 
     Comments.insert({
+      name: user.profile.name,
       email: user.profile.email,
       timestamp: new Date(),
       room: Session.get('activeRoom'),

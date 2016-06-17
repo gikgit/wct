@@ -11,7 +11,7 @@ var stream = Twit.stream('user');
 stream.on('tweet', function (tweet) {
   Fiber(function() {
     var count = Tweets.find({}).count();
-    if (count > 10) {
+    if (count > 7) {
       cur = Tweets.findOne({}, {sort: {timestamp_ms: 1, limit: 1}});
       Tweets.remove(cur._id);
     }

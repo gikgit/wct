@@ -90,7 +90,7 @@ input[type=text], input[type=email] {
   display: flex;
   flex-direction: column;
   float: left;
-  width: 70%;
+  width: 60%;
   height: 100vh;
 }
 
@@ -100,7 +100,7 @@ input[type=text], input[type=email] {
 
 .main-list {
   flex: 1;
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
   padding: 10px;
 }
 
@@ -217,20 +217,35 @@ input[type=text], input[type=email] {
 }
 
 .twits {
-  width: 30%;
+  width: 40%;
+  /*background-color: #f5f5f5;*/
 }
 
+.twits-list {
+  /*margin-left: 0;*/
+  padding-left: 0;
+  float: left;
+}
+
+.twits-item > img {
+  width: 40px;
+  height: 40px;
+}
 
 .twits-item > .content, .thumb {
   float: left;
-  width: 12%;
+}
+
+.content .timestamp {
+  font-size: 8pt;
+  font-weight: bold;
 }
 
 .twits-item > .content {
-  width: 88%;
+  width: 70%;
   padding-left: 5px;
   margin-bottom: 25px;
-  background-color: #f5f5f5;
+  background-color: white;
 }
 
 .twits-item > .clearfix {
