@@ -21,14 +21,13 @@ Meteor.publish('tweets', function () {
 /* Accounts */
 /*****************************************************************************/
 Accounts.onCreateUser(function (options, user) {
-  var fb_user = {};
-  options.profile.name = user.services.facebook.name;
-  options.profile.email = user.services.facebook.email;
-  if (options.profile) {
-        options.profile.picture = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=small";
-        fb_user.profile = options.profile;
-  }
-  return fb_user;
+  // var google_user = {};
+  options.profile.name = user.services.google.name;
+  options.profile.email = user.services.google.email;
+  options.profile.picture = user.services.google.picture;
+
+  // google_user.profile = options.profile;
+  return options;
 });
 
 /*****************************************************************************/

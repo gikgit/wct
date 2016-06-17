@@ -22,7 +22,7 @@
 <template name="Menu">
   <div class="ui sidebar inverted vertical menu">
     <header>
-      <h1>CHAT2U</h1>
+      <h1>CHATweet</h1>
       <div class="user-id">{{>loginButtons}}</div>
     </header>
     <div class="rooms">
@@ -99,7 +99,6 @@
     <div class="name">
       <a href="{{user.url}}">{{user.name}}</a>
       {{formatDate}}
-      <!-- {{timestamp_ms}} -->
     </div>
 
     {{#with content}}
