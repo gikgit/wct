@@ -1,0 +1,28 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+momentjs:moment
+accounts-ui
+http
+natestrauser:font-awesome
+reactive-var
+meteor-base
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+ejson
+spacebars
+standard-minifier-css
+standard-minifier-js
+semantic:ui
+flemay:less-autoprefixer
+mrt:twit
+accounts-github
+kwk:fibers
