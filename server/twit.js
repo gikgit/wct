@@ -16,7 +16,6 @@ stream.on('tweet', function (tweet) {
       Tweets.remove(cur._id);
     }
     Tweets.insert(tweet);
-    console.log(tweet);
   }).run();
 
 

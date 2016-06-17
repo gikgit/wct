@@ -21,6 +21,14 @@ Meteor.publish('tweets', function () {
 /* Accounts */
 /*****************************************************************************/
 Accounts.onCreateUser(function (options, user) {
+  var fb_user = {};
+  options.profile.name = user.services.facebook.name;
+  options.profile.email = user.services.facebook.email;
+  if (options.profile) {
+        options.profile.picture = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=small";
+        fb_user.profile = options.profile;
+  }
+  return fb_user;
   // var google_user = {};
   // options.profile.name = user.services.google.name;
   // options.profile.email = user.services.google.email;
@@ -28,29 +36,29 @@ Accounts.onCreateUser(function (options, user) {
 
   // google_user.profile = options.profile;
   // return options;
-  options.profile.login = user.services.github.username;
-  options.profile.email = user.services.github.email;
-
-  var accessToken = user.services.github.accessToken;
-  var username = options.profile.login;
-
-  // add header Authorization: token <token>
-  var apiOptions = {
-    headers: {
-      'Authorization': 'token ' + accessToken,
-      'User-Agent': 'eventedmind-devel'
-    }
-  };
-
-  var url = 'https://api.github.com/users/' + username;
-  var response = HTTP.get(url, apiOptions);
-
-  options.profile.avatarUrl = response.data.avatar_url;
-  options.profile.githubId = response.data.id;
-  options.profile.url = response.data.html_url;
-
-  user.profile = options.profile;
-  return user;
+  // options.profile.login = user.services.github.username;
+  // options.profile.email = user.services.github.email;
+  //
+  // var accessToken = user.services.github.accessToken;
+  // var username = options.profile.login;
+  //
+  // // add header Authorization: token <token>
+  // var apiOptions = {
+  //   headers: {
+  //     'Authorization': 'token ' + accessToken,
+  //     'User-Agent': 'eventedmind-devel'
+  //   }
+  // };
+  //
+  // var url = 'https://api.github.com/users/' + username;
+  // var response = HTTP.get(url, apiOptions);
+  //
+  // options.profile.avatarUrl = response.data.avatar_url;
+  // options.profile.githubId = response.data.id;
+  // options.profile.url = response.data.html_url;
+  //
+  // user.profile = options.profile;
+  // return user;
 });
 
 /*****************************************************************************/
