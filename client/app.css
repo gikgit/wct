@@ -100,7 +100,7 @@ input[type=text], input[type=email] {
 
 .main-list {
   flex: 1;
-  /*overflow-y: scroll;*/
+  overflow-y: hidden;
   padding: 10px;
 }
 
@@ -118,10 +118,7 @@ input[type=text], input[type=email] {
 
 .main-footer {
   padding: 20px;
-  /*border-top: 1px solid #ccc;*/
 }
-
-
 
 
 .ui header {
