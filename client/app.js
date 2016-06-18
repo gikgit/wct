@@ -51,7 +51,7 @@ Template.Room.helpers({
 
 Template.Twits.helpers({
   twitsList: function () {
-    console.log(Tweets.find({}, {sort: {timestamp_ms: -1}}).fetch());
+    // console.log(Tweets.find({}, {sort: {timestamp_ms: -1}}).fetch());
     return Tweets.find({}, {sort: {timestamp_ms: -1}});
   }
 });
@@ -69,6 +69,9 @@ Template.TwitsItem.helpers({
       info.url = urls.pop();
     }
 
+    if (this.entities.media) {
+      info.img = this.entities.media[0].media_url;
+    }
     return info;
   }
 });

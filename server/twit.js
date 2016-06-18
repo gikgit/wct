@@ -11,10 +11,11 @@ var stream = Twit.stream('user');
 stream.on('tweet', function (tweet) {
   Fiber(function() {
     var count = Tweets.find({}).count();
-    if (count > 7) {
-      cur = Tweets.findOne({}, {sort: {timestamp_ms: 1, limit: 1}});
+    if (count > 0) {
+      cur = Tweets.findOne({});
       Tweets.remove(cur._id);
     }
+
     Tweets.insert(tweet);
   }).run();
 
