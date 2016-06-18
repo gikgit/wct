@@ -100,7 +100,7 @@ Template.CommentItem.helpers({
 });
 
 Template.registerHelper('formatDate', function() {
-  return moment().format('MMMM Do YYYY, h:mm:ss a');
+  return moment(timestamp_ms).calendar();
 });
 /*****************************************************************************/
 /* Template Events */
