@@ -216,18 +216,18 @@ input[type=text], input[type=email] {
 
 .twits {
   width: 40%;
-  height: 50%;
+  /*height: 50%;*/
   margin: auto;
   padding-left: 30px;
   background-color: #0F414F;
 }
 
-.weather {
+/*.weather {
   width: 40%;
   margin: auto;
   padding-left: 30px;
   background-color: #6DA398;
-}
+}*/
 
 
 .twits-list {
