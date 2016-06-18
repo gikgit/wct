@@ -51,6 +51,7 @@ Template.Room.helpers({
 
 Template.Twits.helpers({
   twitsList: function () {
+    console.log(Tweets.find({}, {sort: {timestamp_ms: -1}}).fetch());
     return Tweets.find({}, {sort: {timestamp_ms: -1}});
   }
 });
@@ -99,8 +100,8 @@ Template.CommentItem.helpers({
 
 });
 
-Template.registerHelper('formatDate', function() {
-  return moment(timestamp_ms).calendar();
+Template.registerHelper('formatDate', function(date) {
+  return moment(Number(date)).calendar();
 });
 /*****************************************************************************/
 /* Template Events */
