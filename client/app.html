@@ -15,8 +15,8 @@
     <div class="twits">
       {{> Twits}}
     </div>
-    <div class="weather">
-
+    <div class="video">
+      {{> VideoBtn}}
     </div>
     {{> RoomAddDialog}}
   </div>
@@ -70,7 +70,6 @@
   {{#if currentUser}}
   <section class="main-list">
     {{> CommentList}}
-
   </section>
   <footer class="main-footer">
     {{> CommentAdd}}
@@ -84,7 +83,6 @@
   </div>
   {{/if}}
 </template>
-
 
 <template name="Twits">
   <ul class="twits-list">
@@ -116,6 +114,35 @@
   <div class="clearfix"></div>
 
 </template>
+
+
+<template name="VideoBtn">
+  <div class="video hide">
+    {{> Video}}
+  </div>
+</template>
+
+
+<template name="Video">
+    <div id="video-container">
+      <!-- note the 'autoplay' -->
+      <div class="video-me">
+        <video id="myVideo" muted="true" class="myVideo" autoplay></video>
+      </div>
+      <div class="video-friend">
+        <video id="theirVideo" class="theirVideo" autoplay></video>
+      </div>
+
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="call_id">
+      <p>Your id: <span id="myPeerId">...</span></p>
+      <input type="text" placeholder="Call user id..." id="remotePeerId">
+      <p><a href="#" id="makeCall">Call</a></p>
+    </div>
+</template>
+
 
 
 <template name="CommentList">

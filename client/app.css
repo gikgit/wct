@@ -86,7 +86,7 @@ input[type=text], input[type=email] {
   color: #fff;
 }
 
-.main, .twits, .weather {
+.main, .twits, .video {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -216,18 +216,77 @@ input[type=text], input[type=email] {
 
 .twits {
   width: 40%;
-  /*height: 50%;*/
+  height:50%;
   margin: auto;
   padding-left: 30px;
   background-color: #0F414F;
+
 }
 
-/*.weather {
+.video {
   width: 40%;
   margin: auto;
   padding-left: 30px;
-  background-color: #6DA398;
+  background-color: #0F414F;
+  position: relative;;
+  /*bottom: 0;*/
+  /*left: 0;*/
+  /*height: 800px;*/
+  /*overflow-y: scroll;*/
+}
+
+.video.hide {
+  display: none;
+}
+
+.video.show {
+  
+}
+
+/*#theirVideo {
+
 }*/
+
+.call_id {
+  /*display: inline-block;*/
+}
+
+#video-container {
+  /*position: fixed;
+  bottom: 0;
+  right: 0;*/
+  /*height: 300px;*/
+  /*right: auto;*/
+
+}
+
+
+#video-container .clearfix {
+  clear: both;
+}
+
+
+.video-me, .video-friend {
+  width: 50%;
+  float: left;
+  height: auto;
+}
+
+.video-friend {
+  width: 50%;
+
+}
+
+#myVideo, #theirVideo {
+  width: 100%;
+  height: auto;
+
+}
+
+#theirVideo {
+  padding-left: 10px;
+}
+
 
 
 .twits-list {
