@@ -15,6 +15,9 @@ stream.on('tweet', function (tweet) {
       cur = Tweets.findOne({});
       Tweets.remove(cur._id);
       Tweets.insert(tweet);
+    }else{
+      cur = Tweets.findOne({});
+      Tweets.remove(cur._id);
     }
   }).run();
 
